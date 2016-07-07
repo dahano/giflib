@@ -1,6 +1,8 @@
 package com.ofirdahan.giflib.Controller;
 
+import com.ofirdahan.giflib.data.GifRepository;
 import com.ofirdahan.giflib.model.Gif;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +16,10 @@ import java.util.Map;
 
 @Controller
 public class GifController {
+    @Autowired
+    private GifRepository gifRepository;
+
+
     @RequestMapping("/")
     public String listGifs(){
         return "home";
@@ -21,7 +27,7 @@ public class GifController {
 
     @RequestMapping("/gif")
     public String gifDetails(ModelMap modelmap){
-        Gif gif = new Gif("compiler-bot", "Ofir Dahan",true);
+        Gif gif = gifRepository.findByName("android-explosion");
         modelmap.put("gif", gif);
         return "gif-details";
     }
