@@ -4,13 +4,23 @@ import java.util.Date;
 
 public class Gif {
     private String name;
-    private String creator;
+    private int categoryId;
+    public String creator;
     private boolean favorite;
 
-    public Gif(String name, String creator, boolean favorite) {
+    public Gif(String name, int categoryId, String creator, boolean favorite) {
         this.name = name;
+        this.categoryId = categoryId;
         this.creator = creator;
         this.favorite = favorite;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getName() {
